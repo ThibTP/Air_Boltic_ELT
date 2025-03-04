@@ -12,7 +12,7 @@ SELECT
     am.max_seats AS aeroplane_max_seats, 
     am.max_weight AS aeroplane_max_weight, 
     am.max_distance AS aeroplane_max_distance,
-    CURRENT_TIMESTAMP AS created_at,
+    CURRENT_DATE AS created_at,
     CURRENT_TIMESTAMP AS updated_at
 FROM {{ source("airboltic-dwh", "order") }} o
 LEFT JOIN {{ source("airboltic-dwh", "trip") }} t
@@ -26,4 +26,4 @@ LEFT JOIN {{ source("airboltic-dwh", "aeroplane") }} a
 LEFT JOIN {{ source("airboltic-dwh", "aeroplane_model") }} am
     ON a.airplane_model = am.airplane_model
 LEFT JOIN {{ ref('stg_dim_date') }} d
-    ON DATE_TRUNC('day', o.order_date) = d.date_actual
+    ON o.order_date = d.date_actual
