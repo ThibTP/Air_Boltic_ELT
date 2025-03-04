@@ -104,27 +104,10 @@ CREATE TABLE raw.order (
 
 ALTER TABLE raw.order OWNER TO postgres;
 
--- Data for Name: aircrafts; Type: TABLE DATA; Schema: raw; Owner: postgres
---
-
-COPY public.aircrafts (aircraft_name, aircraft_iata, aircraft_icao, aircraft_id) FROM stdin;
-Aerospatiale (Nord) 262	ND2	N262	ND2N262
-Aerospatiale (Sud Aviation) Se.210 Caravelle	CRV	S210	CRVS210
-Aerospatiale SN.601 Corvette	NDC	S601	NDCS601
-Aerospatiale/Alenia ATR 42-300	AT4	AT43	AT4AT43
-\.
-
---
--- Name: aircrafts aircrafts_pkey; Type: CONSTRAINT; Schema: raw; Owner: postgres
---
-
-ALTER TABLE ONLY public.aircrafts
-    ADD CONSTRAINT aircrafts_pkey PRIMARY KEY (aircraft_id);
-
 -- Data for Name: customers; Type: TABLE DATA; Schema: raw; Owner: postgres
 --
 
-COPY public.customers (customer_id, name, customer_group_id, email, phone_number) FROM stdin;
+COPY public.customers (customer_id, name, customer_group_id, email, phone_number) FROM AirBoltic_BE;
 1	John Doe	1	john.doe@gmail.com	+1-555-123-4567
 2	Jane Smith	\N	jane.smith@yahoo.com	+44 20 7946 0958
 3	Alice Johnson	3	alice.j@example.com	+49-30-12345678
