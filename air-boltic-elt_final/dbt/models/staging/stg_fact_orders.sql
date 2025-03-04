@@ -4,7 +4,7 @@ SELECT
     a.airplane_id,
     o.customer_id, 
     cg.customer_group_id,
-    o.order_date as order_date_id,
+    d.date_id as order_date_id,
     o.status AS order_status, 
     o.price_eur AS order_price, 
     o.seat_no AS seat_number, 
