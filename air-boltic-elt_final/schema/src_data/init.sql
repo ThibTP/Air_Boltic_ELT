@@ -104,10 +104,10 @@ CREATE TABLE raw.order (
 
 ALTER TABLE raw.order OWNER TO postgres;
 
--- Data for Name: customers; Type: TABLE DATA; Schema: raw; Owner: postgres
+-- Data for Name: customer; Type: TABLE DATA; Schema: raw; Owner: postgres
 --
 
-COPY public.customers (customer_id, name, customer_group_id, email, phone_number) FROM AirBoltic_BE;
+COPY raw.customer (customer_id, name, customer_group_id, email, phone_number) FROM AirBoltic_BE;
 1	John Doe	1	john.doe@gmail.com	+1-555-123-4567
 2	Jane Smith	\N	jane.smith@yahoo.com	+44 20 7946 0958
 3	Alice Johnson	3	alice.j@example.com	+49-30-12345678
@@ -130,13 +130,5 @@ COPY public.customers (customer_id, name, customer_group_id, email, phone_number
 20	Rachel Walker	10	rachel.walker@company.net	+1 (555) 012-4567
 \.
 
---
--- Name: customers customers_pkey; Type: CONSTRAINT; Schema: raw; Owner: postgres
---
-
-ALTER TABLE ONLY public.customers
-    ADD CONSTRAINT customers_pkey PRIMARY KEY (customer_id);
-
-
-
+----
 --------- EXECUTE THE SAME FOR ALL source TABLES ----------- 
