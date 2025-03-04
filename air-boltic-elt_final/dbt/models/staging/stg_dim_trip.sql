@@ -5,6 +5,6 @@ SELECT
     airplane_id, 
     start_timestamp, 
     end_timestamp,
-    CURRENT_TIMESTAMP AS created_at,
+    CURRENT_DATE AS created_at,
     CURRENT_TIMESTAMP AS updated_at
 FROM {{ source("airboltic-dwh", "trip") }}
