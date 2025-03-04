@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: airboltic-dwh
+    database: airboltic-dwh
+    schema: airboltic_dwh_staging
+    tables:
+      - name: customer
+      - name: customer_group
+      - name: trip
+      - name: order
+      - name: aeroplane
+      - name: aeroplane_model
