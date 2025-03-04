@@ -2,10 +2,10 @@ SELECT
     o.order_id, 
     d.date_id,
     o.trip_id, 
-    t.airplane_id,
+    a.airplane_id,
     o.customer_id, 
-    c.customer_group_id,
-    o.order_date_id,
+    cg.customer_group_id,
+    d.date_id as order_date_id,
     o.status AS order_status, 
     o.price_eur AS order_price, 
     o.seat_no AS seat_number, 
@@ -26,4 +26,4 @@ LEFT JOIN {{ source("airboltic-dwh", "aeroplane") }} a
 LEFT JOIN {{ source("airboltic-dwh", "aeroplane_model") }} am
     ON a.airplane_model = am.airplane_model
 LEFT JOIN {{ ref('stg_dim_date') }} d
-    ON DATE_TRUNC('day', o.created_at) = d.date_actual
+    ON DATE_TRUNC('day', o.order_date) = d.date_actual
