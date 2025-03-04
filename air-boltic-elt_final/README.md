@@ -18,3 +18,6 @@ I will not code the entire project (e.g., Airflow DAGs, DBT models), but I will 
   - `etl_pipeline.sh` → *Shell script to automate pipeline execution*
   - `docker-compose.yml` → *Containerized execution setup*
   - `requirements.txt` → *Dependencies for the project*
+ 
+Most of the code is the implementation of the data model below: 
+![data_model_ELT_Air](https://github.com/user-attachments/assets/5636eb0e-99ed-41c0-9c8d-7b4a1f9b3f6d)
