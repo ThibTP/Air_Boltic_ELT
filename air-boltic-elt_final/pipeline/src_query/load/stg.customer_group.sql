@@ -15,7 +15,6 @@ FROM raw.customer_group
 ON CONFLICT(customer_group_id)
 DO UPDATE SET
     type = EXCLUDED.type,
-    customer_gender = EXCLUDED.customer_gender,
     name = EXCLUDED.name,
     registry_number = EXCLUDED.registry_number,
     updated_at = CASE WHEN 
