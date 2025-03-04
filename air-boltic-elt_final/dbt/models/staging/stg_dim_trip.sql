@@ -1,8 +1,8 @@
 SELECT 
     trip_id, 
+    airplane_id, 
     origin_city, 
     destination_city, 
-    airplane_id, 
     start_timestamp, 
     end_timestamp,
     CURRENT_DATE AS created_at,
