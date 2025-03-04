@@ -7,24 +7,25 @@ INSERT INTO airboltic_dwh_staging.trip
 
 SELECT
     trip_id,
+    airplane_id,
     origin_city,
     destination_city,
-    airplane_id,
     start_timestamp,
     end_timestamp
 FROM raw.trip
 
 ON CONFLICT (trip_id)
 DO UPDATE SET
+    airplane_id = EXCLUDED.airplane_id,
     origin_city = EXCLUDED.origin_city,
     destination_city = EXCLUDED.destination_city,
-    airplane_id = EXCLUDED.airplane_id,
     start_timestamp = EXCLUDED.start_timestamp,
     end_timestamp = EXCLUDED.end_timestamp,
     updated_at = CASE WHEN 
-                        airboltic_dwh_staging.trip.origin_city <> EXCLUDED.origin_city
+    
+                        airboltic_dwh_staging.trip.airplane_id <> EXCLUDED.airplane_id
+                        OR airboltic_dwh_staging.trip.origin_city <> EXCLUDED.origin_city
                         OR airboltic_dwh_staging.trip.destination_city <> EXCLUDED.destination_city
-                        OR airboltic_dwh_staging.trip.airplane_id <> EXCLUDED.airplane_id
                         OR airboltic_dwh_staging.trip.start_timestamp <> EXCLUDED.start_timestamp
                         OR airboltic_dwh_staging.trip.end_timestamp <> EXCLUDED.end_timestamp
                       THEN CURRENT_TIMESTAMP
